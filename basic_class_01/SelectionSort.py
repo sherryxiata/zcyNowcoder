@@ -3,18 +3,19 @@
 # @Time    : 2020/2/7 19:00
 # @Author  : wenlei
 
-#选择排序
+'''选择排序
+'''
 
 import random
 
 def selectionSort(arr):
-    if len(arr)<2:
-        return;
-    for i in range(len(arr)-1):
+    if not arr or len(arr) < 2:
+        return
+    for i in range(len(arr) - 1):
         minIndex = i
-        for j in range(i+1,len(arr)):
+        for j in range(i + 1,len(arr)):
             minIndex = j if arr[j] < arr[minIndex] else minIndex
-        swap(arr,i,minIndex) #不管怎样都会交换，这时候用异或抖机灵就可能出问题
+        swap(arr,i,minIndex) # 不管怎样都会交换，这时候用异或抖机灵就可能出问题
 
 def swap(arr,i,j):
     tmp = arr[i]
@@ -27,9 +28,9 @@ def comparator(arr):
     arr.sort()
 
 def generateRandomArray(maxSize,maxValue):
-    arr = [None] * int((maxSize+1) * random.random())
+    arr = [None] * int((maxSize + 1) * random.random())
     for i in range(len(arr)):
-        arr[i] = int((maxValue+1)*random.random()) - int((maxValue)*random.random())
+        arr[i] = int((maxValue + 1)*random.random()) - int((maxValue)*random.random())
     return arr
 
 def copyArray(arr):
@@ -43,7 +44,7 @@ def copyArray(arr):
 def isEqual(arr1,arr2):
     if len(arr1) != len(arr2):
         return False
-    if len(arr1)==0 and len(arr2) ==0:
+    if len(arr1) == 0 and len(arr2) == 0:
         return True
     for i in range(len(arr1)):
         if arr1[i] != arr2[i]:
@@ -54,7 +55,7 @@ if __name__ == '__main__':
     testTime = 50000
     maxSize = 100
     maxValue = 100
-    succeed = True
+    success = True
 
     for i in range(testTime):
         arr1 = generateRandomArray(maxSize,maxValue)
@@ -63,9 +64,9 @@ if __name__ == '__main__':
         comparator(arr2)
 
         if not isEqual(arr1,arr2):
-            succeed = False
+            success = False
             print(arr1)
             print(arr2)
             break
 
-    print('Nice!') if succeed else print('Fuck!')
+    print('Nice!') if success else print('Fuck!')
