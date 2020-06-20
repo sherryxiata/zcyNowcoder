@@ -3,50 +3,51 @@
 # @Time    : 2020/2/11 12:42
 # @Author  : wenlei
 
-#小和问题：对数组中的每一个数，将左边比其小的数累加。
+'''小和问题
+对数组中的每一个数，将左边比其小的数累加。
+'''
 
 import random
 
 def smallSum(arr):
-    if len(arr)<2:
+    if not arr or len(arr) < 2:
         return 0
-    return mergeSort(arr,0,len(arr)-1)
+    return mergeSort(arr, 0, len(arr)-1)
 
 def mergeSort(arr,l,r):
-    if l==r:
+    if l == r:
         return 0
-    mid = l + ((r-l)>>1)
-    return mergeSort(arr,l,mid) + mergeSort(arr,mid+1,r) + merge(arr,l,mid,r)
+    mid = l + ((r-l) >> 1)
+    return mergeSort(arr, l, mid) + mergeSort(arr, mid+1, r) + merge(arr, l, mid, r)
 
 def merge(arr,l,m,r):
     i = 0
     p1 = l
-    p2 = m+1
+    p2 = m + 1
     res = 0
-    help = [None] * (r-l+1)
+    help = [None] * (r - l + 1)
 
-    while p1<=m and p2<=r:
+    while p1 <= m and p2 <= r:
         if arr[p1] < arr[p2]:
             help[i] = arr[p1]
-            res += arr[p1] * (r-p2+1)
+            res += arr[p1] * (r - p2 + 1)
             p1 += 1
-            i += 1
         else:
             help[i] = arr[p2]
             p2 += 1
-            i += 1
-    while p1<=m:
+        i += 1
+    while p1 <= m:
         help[i] = arr[p1]
         p1 += 1
-        i +=1
+        i += 1
 
-    while p2<=r:
+    while p2 <= r:
         help[i] = arr[p2]
         p2 += 1
-        i +=1
+        i += 1
 
     for k in range(len(help)):
-        arr[l+k] = help[k]
+        arr[l + k] = help[k]
 
     return res
 
@@ -96,10 +97,3 @@ if __name__ == '__main__':
         print('Nice!')
     else:
         print('Fuck!')
-
-    # arr1 = [1,3,4,2,5]
-    # arr2 = copyArray(arr1)
-    # res1 = smallSum(arr1)
-    # res2 = comparator(arr2)
-    # print(res1)
-    # print(res2)

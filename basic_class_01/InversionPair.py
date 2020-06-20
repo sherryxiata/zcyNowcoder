@@ -3,52 +3,49 @@
 # @Time    : 2020/2/11 13:46
 # @Author  : wenlei
 
-#逆序对问题：在一个数组中，如果左边的数大于右边的数，则这两个数构成一个逆序对；打印出所有逆序对
+'''逆序对问题
+在一个数组中，如果左边的数大于右边的数，则这两个数构成一个逆序对；打印出所有逆序对
+'''
 
 import random
 
 def inversionPair(arr):
-    if len(arr)<2:
+    if not arr or len(arr) < 2:
         return []
-    return mergeSort(arr,0,len(arr)-1)
+    return mergeSort(arr, 0, len(arr) - 1)
 
-def mergeSort(arr,l,r):
-    if l==r:
+def mergeSort(arr, l, r):
+    if l == r:
         return []
-    mid = l + ((r-l)>>1)
-    return mergeSort(arr,l,mid) + mergeSort(arr,mid+1,r) + merge(arr,l,mid,r)
+    mid = l + (r - l) // 2
+    return mergeSort(arr, l, mid) + mergeSort(arr, mid + 1, r) + merge(arr, l, mid, r)
 
-def merge(arr,l,m,r):
+def merge(arr, l, m, r):
+    help = [None] * (r - l + 1)
     i = 0
     p1 = l
-    p2 = m+1
+    p2 = m + 1
     res = []
-    help = [None] * (r-l+1)
-
-    while p1<=m and p2<=r:
+    while p1 <= m and p2 <= r:
         if arr[p1] > arr[p2]:
-            help[i] = arr[p1]
-            for j in range(p2,r+1):
-                res.append([arr[p1], arr[j]])
-            p1 += 1
-            i += 1
-        else:
             help[i] = arr[p2]
+            for j in range(p1, m + 1):
+                res.append([arr[j], arr[p2]])
             p2 += 1
-            i += 1
-    while p1<=m:
+        else:
+            help[i] = arr[p1]
+            p1 += 1
+        i += 1
+    while p1 <= m:
         help[i] = arr[p1]
         p1 += 1
-        i +=1
-
-    while p2<=r:
+        i += 1
+    while p2 <= r:
         help[i] = arr[p2]
         p2 += 1
-        i +=1
-
+        i += 1
     for k in range(len(help)):
-        arr[l+k] = help[k]
-
+        arr[l + k] = help[k]
     return res
 
 #for test
@@ -107,12 +104,3 @@ if __name__ == '__main__':
         print('Nice!')
     else:
         print('Fuck!')
-
-    arr1 = [3,4,1,5,2]
-    arr2 = copyArray(arr1)
-    res1 = inversionPair(arr1)
-    res2 = comparator(arr2)
-    print(arr1) #看看排序对不对
-    print(res1)
-    print(arr2)
-    print(res2)
