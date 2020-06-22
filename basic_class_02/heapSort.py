@@ -1,53 +1,54 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-# @Time    : 2020/6/20 20:29
+# @Time    : 2020/6/21 18:19
 # @Author  : wenlei
 
-'''利用荷兰国旗改进的快排
+'''堆排序
 '''
 
+import  random
 
-import random
-
-def quickSort(arr):
+def heapSort(arr):
     if not arr or len(arr) < 2:
         return arr
-    sortProcess(arr, 0, len(arr) - 1)
+    # 将数组调整为大根堆
+    for i in range(len(arr)):
+        heapInsert(arr, i)
+    heapSize = len(arr)
+    # 交换堆顶和最后一个元素
+    heapSize -= 1
+    swap(arr, 0, heapSize)
+    while heapSize > 0:
+        #调整大根堆
+        heapify(arr, 0, heapSize)
+        heapSize -= 1
+        swap(arr, 0, heapSize)
 
-def sortProcess(arr, L, R):
-    # 返回的等于部分下标必须是有效值
-    if L < R:
-        # 随机快排
-        swap(arr, L + int(random.random() * (R - L + 1)), R)
-        # 返回等于部分下标
-        p = partition(arr, L, R)
-        # 左边继续划分
-        sortProcess(arr, L, p[0] - 1)
-        # 右边部分继续划分
-        sortProcess(arr, p[1] + 1, R)
+def heapInsert(arr, index):
+    while arr[index] > arr[int((index - 1) / 2)]:
+        swap(arr, index, int((index - 1) / 2))
+        index = int((index - 1) / 2)
 
-def partition(arr, L, R):
-    # 默认以最后一个数作为Num
-    less = L - 1
-    more = R
-    while L < more:
-        if arr[L] < arr[R]:
-            less += 1
-            swap(arr, L, less)
-            L += 1
-        elif arr[L] == arr[R]:
-            L += 1
-        else:
-            more -= 1
-            swap(arr, L, more)
-    # 将最后一位数(num)移到中间来
-    swap(arr, more, R)
-    return [less + 1, more]
+def heapify(arr, index, heapSize):
+    # index位置的元素变小
+    left = 2 * index + 1
+    while left < heapSize:
+        # 两个子孩子中的最大值
+        largest = left + 1 if (left + 1) < heapSize and arr[left + 1] > arr[left] else left
+        # 子孩子中的最大值和index中的最大值
+        largest = largest if arr[largest] > arr[index] else index
+        # index就是三者中的最大值
+        if largest == index:
+            break
+        swap(arr, largest, index)
+        index = largest
+        left = index * 2 + 1
 
 def swap(arr, a, b):
     tmp = arr[a]
     arr[a] = arr[b]
     arr[b] = tmp
+
 
 # for test
 def comparator(arr):
@@ -86,7 +87,7 @@ if __name__ == '__main__':
     for i in range(testTime):
         arr1 = generateRandomArray(maxSize,maxValue)
         arr2 = copyArray(arr1)
-        quickSort(arr1)
+        heapSort(arr1)
         comparator(arr2)
 
         if not isEqual(arr1,arr2):

@@ -27,7 +27,7 @@ def merge(arr, L, mid, R):
     p1 = L
     p2 = mid + 1
     while p1 <= mid and p2 <= R:
-        if arr[p1] < arr[p2]:
+        if arr[p1] <= arr[p2]:
             help[i] = arr[p1]
             p1 += 1
         else:
