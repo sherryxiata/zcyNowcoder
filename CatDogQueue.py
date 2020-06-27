@@ -40,17 +40,17 @@ class Pet():
 
 class Dog(Pet):
     def __init__(self):
-        super().__init__('Dog')
+        super().__init__('dog')
 
 class Cat(Pet):
     def __init__(self):
-        super().__init__('Cat')
+        super().__init__('cat')
 
 # 自定义一个enter类
 class PetEnter():
-    def __init__(self):
-        self.pet = Pet()
-        self.count = 0
+    def __init__(self, pet, count):
+        self.pet = pet
+        self.count = count
 
     def getPet(self):
         return self.pet
@@ -58,16 +58,76 @@ class PetEnter():
     def getCount(self):
         return self.count
 
-    def getEnterPetType(self):
-        return self.pet.getPetType()
-
 # 猫狗队列
 class CatDogQueue():
     def __init__(self):
+        self.catQ = Queue()
+        self.dogQ = Queue()
+        self.count = 0
 
-        self.catQueue = PetEnter(Cat)
+    def add(self, pet):
+        if pet.getPetType() == 'dog':
+            self.dogQ.push(PetEnter(pet, self.count))
+            self.count += 1
+        elif pet.getPetType() == 'cat':
+            self.catQ.push(PetEnter(pet, self.count))
+            self.count += 1
+        else:
+            raise Exception('no dog or cat')
 
+    def pollAll(self):
+        if not self.catQ.isEmpty() and not self.dogQ.isEmpty():
+            if self.catQ.peek().getCount() < self.dogQ.peek().getCount():
+                return self.catQ.pop().getPet()
+            else:
+                return self.dogQ.pop().getPet()
+        elif self.catQ.isEmpty():
+            return self.dogQ.pop().getPet()
+        elif self.dogQ.isEmpty():
+            return self.catQ.pop().getPet()
+        else:
+            raise Exception('error, no dog or cat')
+
+    def pollDog(self):
+        if not self.dogQ.isEmpty():
+            return self.dogQ.pop().getPet()
+        else:
+            raise Exception('no dog')
+
+    def pollCat(self):
+        if not self.catQ.isEmpty():
+            return self.catQ.pop().getPet()
+        else:
+            raise Exception('no dog')
+
+    def isEmpty(self):
+        return self.catQ.isEmpty() and self.dogQ.isEmpty()
+
+    def isDogEmpty(self):
+       return self.dogQ.isEmpty()
+
+    def isCatEmpty(self):
+      return self.catQ.isEmpty()
 
 if __name__ == '__main__':
+    test = CatDogQueue()
+
     dog1 = Dog()
-    print(dog1.getPetType())
+    cat1 = Cat()
+    dog2 = Dog()
+    cat2 = Cat()
+    dog3 = Dog()
+    cat3 = Cat()
+
+    test.add(dog1)
+    test.add(cat1)
+    test.add(dog2)
+    test.add(cat2)
+    test.add(dog3)
+    test.add(cat3)
+
+    while not test.isEmpty():
+        print(test.pollAll().getPetType())
+
+    while not test.isCatEmpty():
+        print(test.pollCat().getPetType())
