@@ -17,7 +17,7 @@ def inversionPair(arr):
 def mergeSort(arr, l, r):
     if l == r:
         return []
-    mid = l + (r - l) // 2
+    mid = l + (r - l) # 2
     return mergeSort(arr, l, mid) + mergeSort(arr, mid + 1, r) + merge(arr, l, mid, r)
 
 def merge(arr, l, m, r):
