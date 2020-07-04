@@ -14,7 +14,7 @@ class Node():
 
 # 解法1：哈希表
 def copyListWithRandom1(head):
-    hashMap =
+    hashMap = {}
     cur = head
     while cur:
         hashMap[cur] = Node(cur.val)
