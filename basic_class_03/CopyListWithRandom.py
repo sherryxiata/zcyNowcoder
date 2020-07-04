@@ -14,7 +14,7 @@ class Node():
 
 # 解法1：哈希表
 def copyListWithRandom1(head):
-    hashMap = {}
+    hashMap =
     cur = head
     while cur:
         hashMap[cur] = Node(cur.val)
@@ -84,7 +84,7 @@ if __name__ == '__main__':
     head.next.random = head.next.next.next.next.next # 2 -> 6
     head.next.next.random = head.next.next.next.next # 3 -> 5
     head.next.next.next.random = head.next.next # 4 -> 3
-    head.next.next.next.next.random = None # 5 -> null
+    head.next.next.next.next.random = None # 5 -> None
     head.next.next.next.next.next.random = head.next.next.next # 6 -> 4
 
     printListWithRandom(head)

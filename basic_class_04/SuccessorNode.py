@@ -91,11 +91,11 @@ if __name__ == '__main__':
     print(test.value, " next: ", getSuccessorNode(test).value)
     test = head.right
     print(test.value, " next: ", getSuccessorNode(test).value)
-    test = head.right.right #  10's next is null
+    test = head.right.right #  10's next is None
     print(test.value, " next: ", getSuccessorNode(test))
 
     # 前驱节点
-    test = head.left.left  #  1's last is null
+    test = head.left.left  #  1's last is None
     print(test.value, " last: ", getProceedNode(test))
     test = head.left.left.right
     print(test.value, " last: ", getProceedNode(test).value)
