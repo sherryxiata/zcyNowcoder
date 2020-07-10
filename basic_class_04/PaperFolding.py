@@ -8,13 +8,13 @@
 '''
 
 def printAllFolds(N):
-    printProcess(1, N, True) # 第一层，共N层，is down
+    printProcess(1, N, True) # 第一层，共N层，is fro
 
-def printProcess(i, N, isDown):
+def printProcess(i, N, isfro):
     if i > N:
         return
     printProcess(i + 1, N, True)
-    print('down', end = ',') if isDown == True else  print('up', end = ',')
+    print('fro', end = ',') if isfro == True else  print('up', end = ',')
     printProcess(i + 1, N, False)
 
 if __name__ == '__main__':
