@@ -20,6 +20,7 @@ def process1(arr, i):
         swap(arr, i, j)
         process1(arr, i + 1)
 
+# 无重复
 def printAllPermutations2(str):
     arr = list(str)
     process2(arr, 0)
@@ -34,7 +35,6 @@ def process2(arr, i):
             hashSet.add(arr[j])
             swap(arr, i, j)
             process2(arr, i + 1)
-
 
 def swap(arr, i, j):
      tmp = arr[i]
