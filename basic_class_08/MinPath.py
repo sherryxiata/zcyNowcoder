@@ -24,6 +24,23 @@ def process1(matrix, i, j):
     else:
         return matrix[i][j] + min(process1(matrix, i, j + 1), process1(matrix, i + 1, j))
 
+def minPath2(m):
+    if not m or not m[0]:
+        return 0
+    row = len(m)
+    col = len(m[0])
+    dp = [[None] * col for _ in range(row)]
+    dp[row - 1][col - 1] = m[row - 1][col - 1]
+    for i in range(row - 2, -1, -1):
+        dp[i][col - 1] = m[i][col - 1] + dp[i + 1][col - 1]
+    for j in range(col - 2, -1, -1):
+        dp[row - 1][j] = m[row - 1][j] + dp[row - 1][j + 1]
+    for i in range(row - 2, -1, -1):
+        for j in range(col - 2, -1, -1):
+            dp[i][j] = m[i][j] + min(dp[i + 1][j], dp[i][j + 1])
+    return dp[0][0]
+
+
 # for test
 def generateRandomMatrix(rowSize, colSize):
     if rowSize < 0 or colSize < 0:
@@ -37,7 +54,9 @@ def generateRandomMatrix(rowSize, colSize):
 if __name__ == '__main__':
     m = [[1, 3, 5, 9],[8, 1, 3, 4], [5, 0, 6, 1], [8, 8, 4, 0]]
     print(minPath1(m))
+    print(minPath2(m))
 
-    m = generateRandomMatrix(2,3)
+    m = generateRandomMatrix(6,7)
     print(m)
     print(minPath1(m))
+    print(minPath2(m))
