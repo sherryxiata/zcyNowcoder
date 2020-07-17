@@ -13,12 +13,14 @@ def printAllPermutations1(str):
     process1(arr, 0)
 
 def process1(arr, i):
-    if i == len(arr):
+    if i == len(arr) - 1:
         print(''.join(arr))
         return
     for j in range(i, len(arr)):
         swap(arr, i, j)
         process1(arr, i + 1)
+        swap(arr, j, i)
+
 
 # 无重复
 def printAllPermutations2(str):
@@ -35,6 +37,8 @@ def process2(arr, i):
             hashSet.add(arr[j])
             swap(arr, i, j)
             process2(arr, i + 1)
+            swap(arr, j, i)
+
 
 def swap(arr, i, j):
      tmp = arr[i]
