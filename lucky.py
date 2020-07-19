@@ -83,3 +83,17 @@ heapq.heappush(heap, - x) # 插入元素
 len(heap) # 堆的大小
 
 not heap # 堆为空
+
+# 比较器
+import functools
+
+def myComparator(s1, s2):
+    if (s1 + s2) < (s2 + s1):
+        return -1 # s1比较小
+    elif (s1 + s2) > (s2 + s1):
+        return 1 # s1比较大
+    else:
+        return 0
+
+def lowestString(strs):
+    sort_strs = sorted(strs, key = functools.cmp_to_key(myComparator))

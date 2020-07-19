@@ -118,7 +118,7 @@ if __name__ == '__main__':
     head1.next.next.next.next = Node(5)
     head1.next.next.next.next.next = Node(6)
     head1.next.next.next.next.next.next = Node(7)
-    head1.next.next.next.next.next.next = head1.next.next.next # 7->4
+    head1.next.next.next.next.next.next.next = head1.next.next.next # 7->4
     #
     # head2 = Node(0)
     # head2.next = Node(9)
