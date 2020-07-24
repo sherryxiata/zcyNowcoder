@@ -50,6 +50,38 @@ class Queue():
     def size(self):
         return len(self.arr)
 
+# 队列（queue包中的Queue）
+import queue
+
+q = queue.Queue() # 创建队列
+
+q.put(1) # 插入元素
+
+q.get() # 弹出元素
+
+q.qsize() # 队列大小
+
+q.empty() # 判断队列是否为空
+
+# 队列和栈（collections包中的deque双向队列，性能最好）
+import collections
+
+deque = collections.deque() # 创建双向队列/栈
+
+deque.append(x) # 插入元素到队尾（队列）
+
+deque.appendleft(x) # 插入元素到队头（栈）
+
+deque.pop() # 弹出队尾元素
+
+deque.popleft() # 从队头弹出元素（√）
+
+deque[0] # 队头/栈顶元素
+
+len(deque) # 队列/栈大小
+
+# 判断队列是否为空
+
 # 小根堆（python默认为小根堆）
 import heapq
 
@@ -97,3 +129,17 @@ def myComparator(s1, s2):
 
 def lowestString(strs):
     sort_strs = sorted(strs, key = functools.cmp_to_key(myComparator))
+
+
+# 交换
+def swap(arr, i, j):
+    tmp = arr[i]
+    arr[i] = arr[j]
+    arr[j] = tmp
+
+def swap(arr, i, j):
+    arr[i] = arr[i] ^ arr[j]
+    arr[j] = arr[i] ^ arr[j]
+    arr[i] = arr[i] ^ arr[j]
+
+a, b = b, a
