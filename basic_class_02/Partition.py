@@ -3,8 +3,9 @@
 # @Time    : 2020/6/20 19:36
 # @Author  : wenlei
 
-'''划分问题
-小于等于在左边，大于在右边
+'''
+划分问题
+小于等于num在左边，大于在右边(不一定num在中间)
 '''
 
 import random
@@ -17,14 +18,9 @@ def partition(arr, num):
     while cur < len(arr):
         if arr[cur] <= num:
             p += 1
-            swap(arr, cur, p)
+            arr[cur], arr[p] = arr[p], arr[cur]
         cur += 1
-    return p + 1# 大于位置的开始下标
-
-def swap(arr, a, b):
-    tmp = arr[a]
-    arr[a] = arr[b]
-    arr[b] = tmp
+    return p + 1 # 大于位置的开始下标
 
 # for test
 def generateArray():
@@ -37,5 +33,5 @@ if __name__ == '__main__':
     test = generateArray()
     print(test)
     res = partition(test, 5)
-    print(test)
     print(res)
+    print(test)

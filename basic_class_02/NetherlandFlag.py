@@ -3,7 +3,8 @@
 # @Time    : 2020/6/20 19:54
 # @Author  : wenlei
 
-'''荷兰国旗问题
+'''
+荷兰国旗问题
 小于的放在左边，等于的放在中间，大于的放在右边
 '''
 
@@ -15,19 +16,14 @@ def partition(arr, L, R, num):
     while L < more:
         if arr[L] < num:
             less += 1
-            swap(arr, L, less)
+            arr[L], arr[less] = arr[less], arr[L]
             L += 1
-        elif arr[L] == num:
-            L += 1
-        else:
+        elif arr[L] > num:
             more -= 1
-            swap(arr, L, more)
+            arr[L], arr[more] = arr[more], arr[L]
+        else:
+            L += 1
     return [less + 1, more - 1] # 等于部分的起止下标
-
-def swap(arr, a, b):
-    tmp = arr[a]
-    arr[a] = arr[b]
-    arr[b] = tmp
 
 # for test
 def generateArray():

@@ -1,12 +1,11 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-# @Time    : 2020/6/20 20:29
+# @Time    : 2020/7/26 20:46
 # @Author  : wenlei
 
 '''
-利用荷兰国旗改进的快排
+经典随机快排
 '''
-
 
 import random
 
@@ -18,39 +17,25 @@ def quickSort(arr):
 def sortProcess(arr, L, R):
     # 返回的等于部分下标必须是有效值
     if L < R:
-        # 随机快排
+        # 随机生成一个[l, R]之间的位置
         i = random.randint(L, R)
         arr[i], arr[R] = arr[R], arr[i]
         # 返回等于部分下标
         p = partition(arr, L, R)
         # 左边继续划分
-        sortProcess(arr, L, p[0] - 1)
-        # 右边部分继续划分
-        sortProcess(arr, p[1] + 1, R)
+        sortProcess(arr, L, p - 1)
+        # 右边继续划分
+        sortProcess(arr, p + 1, R)
 
 def partition(arr, L, R):
-    # 默认以最后一个数作为Num
-    less = L - 1
-    more = R
-    while L < more:
-        if arr[L] < arr[R]:
-            less += 1
-            swap(arr, L, less)
-            L += 1
-        elif arr[L] > arr[R]:
-            more -= 1
-            swap(arr, L, more)
-        else:
-            L += 1
-
-    # 将最后一位数(num)移到中间来
-    swap(arr, more, R)
-    return [less + 1, more]
-
-def swap(arr, a, b):
-    tmp = arr[a]
-    arr[a] = arr[b]
-    arr[b] = tmp
+    i = L - 1
+    while L < R:
+        if arr[L] <= arr[R]:
+            i += 1
+            arr[L], arr[i] = arr[i], arr[L]
+        L += 1
+    arr[i + 1], arr[R] = arr[R], arr[i + 1]
+    return i + 1
 
 # for test
 def comparator(arr):
