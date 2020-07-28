@@ -1,88 +1,13 @@
-import random
-
-def mergeSort(arr):
-    if not arr or len(arr) < 2:
-        return arr
-    process(arr, 0, len(arr) - 1)
-
-def process(arr, l, r):
-    if l == r:
-        return
-    m = l + (r - l) // 2
-    process(arr, l, m)
-    process(arr, m + 1, r)
-    merge(arr, l, m, r)
-
-def merge(arr, l, m, r):
-    p1, p2 = l, m + 1
-    help = [None] * (r - l + 1)
-    i = 0
-    while p1 <= m and p2 <= r:
-        if arr[p1] < arr[p2]:
-            help[i] = arr[p1]
-            p1 += 1
-        else:
-            help[i] = arr[p2]
-            p2 += 1
-        i += 1
-    while p1 <= m:
-        help[i] = arr[p1]
-        p1 += 1
-        i += 1
-    while p2 <= r:
-        help[i] = arr[p2]
-        p2 += 1
-        i += 1
-    for i in range(len(help)):
-        arr[l + i] = help[i]
-
-#for test
-def comparator(arr):
-    arr.sort() #直接修改原列表
-
-def generateRandomArray(maxSize,maxValue):
-    arr = [None] * int((maxSize + 1) * random.random())
-    for i in range(len(arr)):
-        arr[i] = int((maxValue + 1) * random.random()) - int((maxValue) * random.random()) # 有正有负
-    return arr
-
-def isEqual(arr1,arr2):
-    if len(arr1) != len(arr2):
-        return False
-    for i in range(len(arr1)):
-        if arr1[i] != arr2[i]:
-            return False
-    return True
-
-def copyArray(arr):
-    if len(arr) == 0:
-        return []
-    arr1 = [None] * len(arr) # 必须要事先声明一个空数组，不然会始终和arr一模一样！！！
-    for i in range(len(arr)):
-        arr1[i] = arr[i]
-    return arr1
-
-if __name__ == '__main__':
-    testTime = 50000
-    maxSize = 100
-    maxValue = 100
-    success = True
-
-    for i in range(testTime):
-        arr1 = generateRandomArray(maxSize,maxValue)
-        arr2 = copyArray(arr1)
-        mergeSort(arr1)
-        comparator(arr2)
-        if not isEqual(arr1,arr2):
-            success = False
-            print(arr1)
-            print(arr2)
-            break
-
-    if success:
-        print('Nice!')
-    else:
-        print('Fuck!')
-
-
+class Solution:
+    def findContinuousSequence(self, target):
+        # 解法2：数学法
+        # 这实际上是一个等差数列，首项为a1，项数为n，求满足数列和为target的[a1, n]对
+        res = []
+        for n in range(2, target + 1):
+            tmp = target - n * (n - 1) / 2
+            if tmp < 0:
+                # 随着n的增长，a1会小于0，此时跳出循环
+                break
+            else:
+                if not
 
