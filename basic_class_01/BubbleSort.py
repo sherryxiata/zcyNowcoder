@@ -11,7 +11,7 @@ import random
 def bubbleSort(arr):
     if not arr or len(arr) < 2:
         return
-    for end in  range(len(arr) - 1, 0, -1):
+    for end in range(len(arr) - 1, 0, -1):
         for i in range(end):
             if arr[i] > arr[i+1]:
                 swap(arr, i, i+1) #交换数组中的两个数
