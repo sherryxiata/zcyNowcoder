@@ -3,7 +3,8 @@
 # @Time    : 2020/2/7 14:55
 # @Author  : wenlei
 
-'''冒泡排序
+'''
+冒泡排序
 '''
 
 import random
@@ -13,7 +14,7 @@ def bubbleSort(arr):
         return
     for end in range(len(arr) - 1, 0, -1):
         for i in range(end):
-            if arr[i] > arr[i+1]:
+            if arr[i] > arr[i + 1]:
                 swap(arr, i, i+1) #交换数组中的两个数
 
 def swap(arr,a,b):
