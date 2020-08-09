@@ -72,7 +72,7 @@ deque.append(x) # 插入元素到队尾（队列）
 
 deque.appendleft(x) # 插入元素到队头（栈）
 
-deque.pop() # 弹出队尾元素
+# deque.pop() # 弹出队尾元素
 
 deque.popleft() # 从队头弹出元素（√）
 
