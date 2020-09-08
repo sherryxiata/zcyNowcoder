@@ -3,6 +3,23 @@
 # @Time    : 2020/7/18 11:23
 # @Author  : wenlei
 
+# 队列和栈（collections包中的deque双向队列，性能最好）
+import collections
+
+deque = collections.deque() # 创建双向队列/栈
+
+deque.append(x) # 插入元素到队尾（队列）
+
+deque.appendleft(x) # 插入元素到队头（栈）
+
+# deque.pop() # 弹出队尾元素
+
+deque.popleft() # 从队头弹出元素（√）
+
+deque[0] # 队头/栈顶元素
+
+len(deque) # 队列/栈大小
+
 # 栈
 class Stack():
     def __init__(self):
@@ -62,23 +79,6 @@ q.get() # 弹出元素
 q.qsize() # 队列大小
 
 q.empty() # 判断队列是否为空
-
-# 队列和栈（collections包中的deque双向队列，性能最好）
-import collections
-
-deque = collections.deque() # 创建双向队列/栈
-
-deque.append(x) # 插入元素到队尾（队列）
-
-deque.appendleft(x) # 插入元素到队头（栈）
-
-# deque.pop() # 弹出队尾元素
-
-deque.popleft() # 从队头弹出元素（√）
-
-deque[0] # 队头/栈顶元素
-
-len(deque) # 队列/栈大小
 
 # 判断队列是否为空
 
