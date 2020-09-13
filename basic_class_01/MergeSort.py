@@ -16,7 +16,7 @@ def mergeSort(arr):
 def sortProcess(arr, L, R):
     if L == R:
         return
-    mid = L + (R - L) # 2
+    mid = L + (R - L) // 2
     sortProcess(arr, L, mid)
     sortProcess(arr, mid + 1, R)
     merge(arr, L, mid, R)
