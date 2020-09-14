@@ -1,2 +1,4 @@
-func = lambda a, b : (a ** b)
-print(func(float(10), 20))
+import random
+random.random()
+random.randint(a, b)
+random.uniform(a, b)

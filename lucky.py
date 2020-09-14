@@ -143,3 +143,21 @@ def swap(arr, i, j):
     arr[i] = arr[i] ^ arr[j]
 
 a, b = b, a
+
+# 读文件操作
+f = open('./practice/article.txt')
+
+data1 = f.read() # 一次性读出整个文件
+
+while True:
+    data2 = f.read(10) # 每次读长度为10的字符串
+    if not data2: break
+
+# 每次读一行
+for line in f.readlines():
+    print(line)
+
+# 将文件作为一个迭代器读取
+with open('./practice/article.txt') as f:
+    for line in f:
+        print(line)
