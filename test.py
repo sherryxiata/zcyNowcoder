@@ -1,12 +1,21 @@
-s = input()
-dict = {}
-for c in s:
-    if c in dict:
-        dict[c] += 1
-    else:
-        dict[c] = 1
-dict = sorted(dict.items(), key = lambda x: x[0])
-# print(dict)
-for num in dict:
-    print(num[0] + '=' + str(num[1]), end = ' ')
-print()
+def minAdd(s):
+    # dp[i][j]表示字符串从位置i到位置j是回文串所要添加字符的最少次数
+    # 如果s[i] == s[j]: dp[i][j] = dp[i + 1][j - 1]
+    # 如果s[i] != s[j]: 可以在s[i]前面加上s[j]/s[j]后面加上s[i]
+    # dp[i][j] = min(dp[i + 1][j], dp[i][j + 1]) + 1
+    n = len(s)
+    dp = [[0] * n for _ in range(n)]
+    #  k表示i和j之间的间隔
+    for k in range(1, n):
+        i = 0
+        while i + k < n:
+            j = i + k
+            if s[i] == s[j]:
+                dp[i][j] = dp[i + 1][j - 1]
+            else:
+                dp[i][j] = min(dp[i + 1][j], dp[i][j - 1]) + 1
+    return dp[0][n - 1]
+
+if __name__ == '__main__':
+    s = input()
+    print(minAdd(s))
