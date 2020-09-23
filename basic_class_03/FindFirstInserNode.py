@@ -5,6 +5,8 @@
 
 '''
 两链表相交的一系列问题
+完整解法：
+https://www.nowcoder.com/profile/4548438/codeBookDetail?submissionId=84451366
 '''
 
 class Node():
