@@ -3,7 +3,8 @@
 # @Time    : 2020/2/11 12:42
 # @Author  : wenlei
 
-'''小和问题
+'''
+小和问题
 对数组中的每一个数，将左边比其小的数累加。
 '''
 
@@ -20,7 +21,7 @@ def mergeSort(arr,l,r):
     mid = l + ((r-l) >> 1)
     return mergeSort(arr, l, mid) + mergeSort(arr, mid+1, r) + merge(arr, l, mid, r)
 
-def merge(arr,l,m,r):
+def merge(arr, l, m, r):
     i = 0
     p1 = l
     p2 = m + 1

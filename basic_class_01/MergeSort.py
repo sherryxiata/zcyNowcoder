@@ -3,7 +3,8 @@
 # @Time    : 2020/2/10 19:36
 # @Author  : wenlei
 
-'''归并排序
+'''
+归并排序
 '''
 
 import random

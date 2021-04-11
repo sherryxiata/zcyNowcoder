@@ -3,7 +3,8 @@
 # @Time    : 2020/2/7 19:00
 # @Author  : wenlei
 
-'''选择排序
+'''
+选择排序
 '''
 
 import random
@@ -13,9 +14,9 @@ def selectionSort(arr):
         return
     for i in range(len(arr) - 1):
         minIndex = i
-        for j in range(i + 1,len(arr)):
+        for j in range(i + 1, len(arr)):
             minIndex = j if arr[j] < arr[minIndex] else minIndex
-        swap(arr,i,minIndex) # 不管怎样都会交换，这时候用异或抖机灵就可能出问题
+        swap(arr, i, minIndex) # 不管怎样都会交换，这时候用异或抖机灵就可能出问题
 
 def swap(arr,i,j):
     tmp = arr[i]

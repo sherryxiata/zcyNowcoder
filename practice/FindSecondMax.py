@@ -4,11 +4,11 @@
 # @Author  : wenlei
 
 '''
-快速找出数组中最大和次大的数
+快速找出数组中最大、第二大的数
 '''
 
 def findSecondMax(nums):
-    if len(nums) < 3:return nums
+    if len(nums) < 3: return nums
     ma, ma2 = nums[0], nums[0]
     for num in nums:
         if num > ma:

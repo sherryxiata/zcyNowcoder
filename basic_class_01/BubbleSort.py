@@ -112,7 +112,7 @@ if __name__ == '__main__':
     for i in range(testTime):
         arr1 = generateRandomArray(maxSize, maxValue)
         arr2 = copyArray(arr1)
-        bubbleSort3(arr1)
+        bubbleSort2(arr1)
         comparator(arr2)
         if not isEqual(arr1,arr2):
             success = False

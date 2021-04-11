@@ -3,7 +3,8 @@
 # @Time    : 2020/2/10 17:23
 # @Author  : wenlei
 
-'''插入排序
+'''
+插入排序
 '''
 
 import random
@@ -13,8 +14,8 @@ def insertSort(arr):
         return
     for i in range(1, len(arr)):
         j = i - 1
-        while j >= 0 and arr[j] > arr[j+1]:
-            swap(arr, j, j+1)
+        while j >= 0 and arr[j] > arr[j + 1]:
+            swap(arr, j, j + 1)
             j = j - 1
 
 def swap(arr,a,b):

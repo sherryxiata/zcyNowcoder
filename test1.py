@@ -1,8 +1,0 @@
-6 6 20 10
-S#++O#
-OXX#X#
-++++++
-###XX#
-++#O#+
-OXO++X
-SSDDDDDAWWSSSAWSSSADDD

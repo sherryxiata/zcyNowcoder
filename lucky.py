@@ -116,7 +116,7 @@ len(heap) # 堆的大小
 
 not heap # 堆为空
 
-# 比较器
+# 比较器1
 import functools
 
 def myComparator(s1, s2):
@@ -129,6 +129,11 @@ def myComparator(s1, s2):
 
 def lowestString(strs):
     sort_strs = sorted(strs, key = functools.cmp_to_key(myComparator))
+
+# 比较器2
+students_tuples = [('join', 'a', 15), ('kane', 'b', 20), ('pole', 'c', 30)]
+sorted(students_tuples, key = lambda student: student[2])
+print(students_tuples)
 
 
 # 交换

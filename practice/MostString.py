@@ -33,18 +33,18 @@ sort_dict = sorted(dict.items(), key = lambda x: x[1], reverse = True)
 print(sort_dict)
 
 
-# file = open('article.txt','r')
-# dict = {}
-# for line in file:
-#     line = line.replace(',', ' ')
-#     line = line.replace('.', ' ')
-#     line = line.replace(';', ' ')
-#     strs = line.split()
-#     for str in strs:
-#         if str in dict:
-#             dict[str] += 1
-#         else:
-#             dict[str] = 1
-#
-# sort_dict = sorted(dict.items(), key = lambda x: x[1], reverse = True)
-# print(sort_dict)
+file = open('article.txt','r')
+dict = {}
+for line in file:
+    line = line.replace(',', ' ')
+    line = line.replace('.', ' ')
+    line = line.replace(';', ' ')
+    strs = line.split()
+    for str in strs:
+        if str in dict:
+            dict[str] += 1
+        else:
+            dict[str] = 1
+
+sort_dict = sorted(dict.items(), key = lambda x: x[1], reverse = True)
+print(sort_dict)
