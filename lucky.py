@@ -166,3 +166,13 @@ for line in f.readlines():
 with open('./practice/article.txt') as f:
     for line in f:
         print(line)
+
+# 遍历dict
+dic = {'a': 1, 'b': 2, 'c': 3}
+
+dic.keys()
+dic.values()
+dic.pop('b')
+
+for k, v in dic.items():
+    print(k, v)
